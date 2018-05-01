@@ -85,10 +85,6 @@ export default React.createClass({
 
 		let templateLink = `/course-templates/${this.props.params.classroomId}/edit`;
 		let classroomLink = `/classroom/${this.props.params.classroomId}`
-		let exerciseLink = '';
-		if(this.state.lesson.exercise_link && this.state.lesson.exercise_link.length > 0) {
-			exerciseLink = <Exercise link={this.state.lesson.exercise_link} />
-		}
 		return (
 		<div className="full">
 				<header className="topContent container">
@@ -97,14 +93,6 @@ export default React.createClass({
 					</div>
 					<div className="lessonHeader">
 						<h1>{this.state.lesson.title}</h1>
-						<div>
-							{(()=> {
-								if(isAdmin) {
-									return <p><a href="#" onClick={this.openModal}><i className="fa fa-cloud-upload"></i> Upload Exercise Files</a></p>;
-								}
-							})()}
-							{exerciseLink}
-						</div>
 					</div>
 					<Modal isOpen={this.state.isModalOpen} transitionName='modal-animation'>
 							<div className="modalBody--small card loginModal">
